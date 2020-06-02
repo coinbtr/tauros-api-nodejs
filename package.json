@@ -1,0 +1,30 @@
+{
+  "name": "tauros-api",
+  "version": "1.0.0",
+  "description": "This module is for connection with Tauros API.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coinbtr/tauros-api-nodejs.git"
+  },
+  "keywords": [
+    "tauros",
+    "coinbtr",
+    "exchange"
+  ],
+  "author": "Altcoins Mex S.A.P.I. de C.V.",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/coinbtr/tauros-api-nodejs/issues"
+  },
+  "homepage": "https://github.com/coinbtr/tauros-api-nodejs#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
