@@ -10,23 +10,9 @@ const api_key = '7c6a0aa1ee3af97a9a796dc0ee9ec558e762f397'
 
 const api_secret = 'a35e67131c5fc4d5894825781eb3c1033ac6d8248745d5d8c28a6689008f5773'
 
-const tauros = new TaurosAPI(api_key, api_secret, staging=true)
-
-describe("Request GET", () => {
-  res_data = {
-    age: 23,
-    email: 'moisesdelacruz.dev@gmail.com',
-    name: 'Moises De La Cruz'
-  }
-  nock('https://staging.api.tauros.io').get('/api/v1/profiles/').reply(200, res_data)
-
-  it("lets you mock requests, and assert on the results", async () => {
-    let response = await tauros.get("/api/v1/profiles/");
-    assert(response, res_data);
-  });
-});
-
 describe("Signature Method", () => {
+  let tauros = new TaurosAPI(api_key, api_secret, staging=true)
+
   MockDate.set('2000-11-22');
   let signature = "Pq6mRUCDlyz97IAXLNd4Ih7xxOOQLjxhmOP1KcGVw7kckcivl7TxPcLilk7F96qzFiZGz7qENBiwbq7PxBtCyA=="
   let data = { foo: 'bar' }
@@ -39,9 +25,119 @@ describe("Signature Method", () => {
 });
 
 describe("Nonce Method", () => {
+  let tauros = new TaurosAPI(api_key, api_secret, staging=true)
+
   MockDate.set('2000-11-22');
 
   it("Validate nonce", () => {
     assert(tauros._nonce(), "974851200", "Nonce is valid?");
+  });
+});
+
+describe("Request GET", () => {
+  let tauros = new TaurosAPI(api_key, api_secret, staging=true)
+
+  let res_data = {
+    age: 23,
+    email: 'moisesdelacruz.dev@gmail.com',
+    name: 'Moises De La Cruz',
+    phone_number: '+525523236412'
+  }
+  let path = '/api/v1/profiles/';
+
+  nock('https://staging.api.tauros.io').get(path).reply(200, res_data)
+
+  it("lets you mock requests, and assert on the results", async () => {
+    let response = await tauros.get(path);
+    assert(response, res_data);
+  });
+});
+
+describe("Request POST", () => {
+  let tauros = new TaurosAPI(api_key, api_secret, staging=true)
+
+  let res_data = {
+    side: 'buy',
+    market: 'BTC-MXN',
+    amount: '0.01',
+    price: '100000',
+    type: 'limit',
+    is_amount_value: true
+  }
+  let path = '/api/v1/trading/placeorder/';
+
+  nock('https://staging.api.tauros.io').post(path).reply(200, res_data)
+
+  let data = {
+    market: "BTC-MXN",
+    amount: "0.001",
+    side: "SELL",
+    type: "LIMIT",
+    price: "250000"
+  }
+
+  it("lets you mock requests, and assert on the results", async () => {
+    let response = await tauros.post(path, data);
+    assert(response, res_data);
+  });
+});
+
+describe("Request PATCH", () => {
+  let tauros = new TaurosAPI(api_key, api_secret, staging=true)
+
+  let res_data = {
+    age: 23,
+    email: 'moisesdelacruz.dev@gmail.com',
+    name: 'Moises De La Cruz',
+    phone_number: '+525523236412'
+  }
+  let path = '/api/v1/profiles/';
+
+  nock('https://staging.api.tauros.io').patch(path).reply(200, res_data)
+
+  let data = {
+    phone_number: '+525523236412'
+  }
+
+  it("lets you mock requests, and assert on the results", async () => {
+    let response = await tauros.patch(path, data);
+    assert(response, res_data);
+  });
+});
+
+describe("Request PUT", () => {
+  let tauros = new TaurosAPI(api_key, api_secret, staging=true)
+
+  let res_data = {
+    age: 21,
+    email: 'moisesdelacruz.dev@gmail.com',
+    name: 'Moises',
+    phone_number: '+525523236412'
+  }
+  let path = '/api/v1/profiles/';
+
+  nock('https://staging.api.tauros.io').put(path).reply(200, res_data)
+
+  let data = res_data;
+
+  it("lets you mock requests, and assert on the results", async () => {
+    let response = await tauros.put(path, data);
+    assert(response, res_data);
+  });
+});
+
+
+describe("Request DELETE", () => {
+  let tauros = new TaurosAPI(api_key, api_secret)
+  let res_data = {}
+  let path = '/api/v1/test/';
+
+  nock('https://api.tauros.io').delete(path).reply(204, res_data)
+
+  let data = res_data;
+
+  it("lets you mock requests, and assert on the results", async () => {
+    let response = await tauros.delete(path, data);
+    assert(response, res_data);
   });
 });
