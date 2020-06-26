@@ -45,7 +45,7 @@ describe("Request GET", () => {
   }
   let path = '/api/v1/profiles/';
 
-  nock('https://staging.api.tauros.io').get(path).reply(200, res_data)
+  nock('https://api.staging.tauros.io').get(path).reply(200, res_data)
 
   it("lets you mock requests, and assert on the results", async () => {
     let response = await tauros.get(path);
@@ -66,7 +66,7 @@ describe("Request POST", () => {
   }
   let path = '/api/v1/trading/placeorder/';
 
-  nock('https://staging.api.tauros.io').post(path).reply(200, res_data)
+  nock('https://api.staging.tauros.io').post(path).reply(200, res_data)
 
   let data = {
     market: "BTC-MXN",
@@ -93,7 +93,7 @@ describe("Request PATCH", () => {
   }
   let path = '/api/v1/profiles/';
 
-  nock('https://staging.api.tauros.io').patch(path).reply(200, res_data)
+  nock('https://api.staging.tauros.io').patch(path).reply(200, res_data)
 
   let data = {
     phone_number: '+525523236412'
@@ -116,7 +116,7 @@ describe("Request PUT", () => {
   }
   let path = '/api/v1/profiles/';
 
-  nock('https://staging.api.tauros.io').put(path).reply(200, res_data)
+  nock('https://api.staging.tauros.io').put(path).reply(200, res_data)
 
   let data = res_data;
 
