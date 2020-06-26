@@ -1,5 +1,14 @@
 # Tauros API Nodejs
 
+[![Build Status](https://travis-ci.org/coinbtr/tauros-api-nodejs.svg?branch=master)](https://travis-ci.org/coinbtr/tauros-api-nodejs)
+
+[![Coverage Status](https://coveralls.io/repos/github/coinbtr/tauros-api-nodejs/badge.svg?branch=master)](https://coveralls.io/github/coinbtr/tauros-api-nodejs?branch=master)
+
+## Install
+```sh
+npm install --save tauros
+```
+
 ## How to use
 ```js
 const TaurosAPI = require('tauros-api-nodejs')
