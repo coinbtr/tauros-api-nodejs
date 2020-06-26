@@ -2,7 +2,7 @@
 
 ## How to use
 ```js
-const TaurosAPI = require('./index.js')
+const TaurosAPI = require('tauros-api-nodejs')
 
 const api_key = '7c6a0aa1ee3af97a9a796dc0ee9ec558e762f397'
 
