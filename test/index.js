@@ -14,7 +14,7 @@ describe("Signature Method", () => {
   let tauros = new TaurosAPI(api_key, api_secret, staging=true)
 
   MockDate.set('2000-11-22');
-  let signature = "Pq6mRUCDlyz97IAXLNd4Ih7xxOOQLjxhmOP1KcGVw7kckcivl7TxPcLilk7F96qzFiZGz7qENBiwbq7PxBtCyA=="
+  let signature = "eZbGxNDeHbfNLDh66Cv4FtZ2Cy/aCnEK3/2aoW/pnqsXJkNQUySgYD1/jx6uY+TVn8a9NlxfGZQWD4SXnRye/Q=="
   let data = { foo: 'bar' }
   let nonce = "974851200";
   let method = "POST";
